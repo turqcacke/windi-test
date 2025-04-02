@@ -1,0 +1,27 @@
+[project]
+name = "windi-test"
+version = "0.0.1"
+description = "Websockets simple chat"
+authors = [
+    {name = "Your Name",email = "you@example.com"}
+]
+license = {text = "UNLICENSED"}
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[standard] (>=0.115.12,<0.116.0)",
+    "sqlalchemy[asyncio] (>=2.0.40,<3.0.0)",
+    "aiocache[memcached,redis] (>=0.12.3,<0.13.0)",
+    "pydantic-settings (>=2.8.1,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.3.5"
+faker = "^37.1.0"
+pytest-asyncio = "^0.26.0"
+
