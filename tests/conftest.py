@@ -1,11 +1,11 @@
 import pytest
 from faker import Faker
 
-FAKER_SEED = 0
+from tests.consts import SEED
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture()
 def faker():
     faker = Faker()
-    faker.seed_instance(seed=FAKER_SEED)
+    faker.seed_instance(seed=SEED)
     return faker

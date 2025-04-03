@@ -1,2 +1,2 @@
-from .chat import Chat, ChatType
+from .chat import Chat, ChatMember, ChatType
 from .events import UserJoindedChatEvent

@@ -3,7 +3,7 @@ from typing import Any
 
 import pytest
 
-from application.event_bus import EventHandler, MessageBus
+from application.message_bus import EventHandler, MessageBus
 from domain.shared.event import Event
 
 
@@ -47,25 +47,25 @@ class TestMessageBus:
                 [(IntDummyEvent, IntDummyEventHandler())],
                 IntDummyEvent(data=1),
                 IntDummyEventHandler.__name__,
-            ],  # One event
-            [  # Two events
+            ],  # One event handler
+            [
                 [
                     (StrDummyEvent, StrDummyEventHandler()),
                     (IntDummyEvent, IntDummyEventHandler()),
                 ],
                 StrDummyEvent(data="Event"),
                 StrDummyEventHandler.__name__,
-            ],
+            ],  # Two event handlers
             [
                 [],
                 StrDummyEvent(data="Event"),
                 DummyEventHandler.__name__,
-            ],
+            ],  # No event hadnlers
         ],
     )
     async def test_register(
         self,
-        class_to_handler: tuple[Event, EventHandler[Event]],
+        class_to_handler: list[tuple[type[Event], EventHandler]],
         event: Event,
         result: str,
     ):
